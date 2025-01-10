@@ -3,6 +3,13 @@ import pandas as pd
 import plotly.express as px
 from sqlalchemy import create_engine
 
+st.title("🔍 Debugging Streamlit Environment Variables")
+
+st.write("DB_HOST:", os.getenv("DB_HOST"))
+st.write("DB_NAME:", os.getenv("DB_NAME"))
+st.write("DB_USER:", os.getenv("DB_USER"))
+st.write("DB_PORT:", os.getenv("DB_PORT"))
+
 # Database connection using SQLAlchemy
 DB_CONFIG = {
     "dbname": "timeseriesdb",
