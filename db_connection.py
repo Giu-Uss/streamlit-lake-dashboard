@@ -2,8 +2,8 @@ import os
 from sqlalchemy import create_engine
 import pandas as pd
 
-# Debugging: Print the actual DB_HOST value
-print("DEBUG: DB_HOST =", os.getenv("DB_HOST"))  
+# Debugging: Check if Streamlit is reading DB_HOST correctly
+print("DEBUG: DB_HOST =", os.getenv("DB_HOST"))
 
 # Database connection details from environment variables
 DB_CONFIG = {
