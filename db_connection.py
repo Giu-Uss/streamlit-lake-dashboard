@@ -23,8 +23,9 @@ print(f"DEBUG: Connection URL: {connection_url}")
 
 # Create engine (temporarily disable SSL mode to see if it helps)
 engine = create_engine(
-    f"postgresql://{DB_CONFIG['user']}:{DB_CONFIG['password']}@{DB_CONFIG['host']}:{DB_CONFIG['port']}/{DB_CONFIG['dbname']}?sslmode=disable"
+    f"postgresql://{DB_CONFIG['user']}:{DB_CONFIG['password']}@{DB_CONFIG['host']}:{DB_CONFIG['port']}/{DB_CONFIG['dbname']}?sslmode=require"
 )
+
 
 # Test connection
 try:
