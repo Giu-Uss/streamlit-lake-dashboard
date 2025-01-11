@@ -4,11 +4,17 @@ import pandas as pd
 
 # Print debug logs in Streamlit
 print("DEBUG: DB_HOST =", os.getenv("DB_HOST"))
+import os
+from sqlalchemy import create_engine
+import pandas as pd
+
+# Print environment variables to verify they are set
+print("DEBUG: DB_HOST =", os.getenv("DB_HOST"))
 print("DEBUG: DB_NAME =", os.getenv("DB_NAME"))
 print("DEBUG: DB_USER =", os.getenv("DB_USER"))
 print("DEBUG: DB_PORT =", os.getenv("DB_PORT"))
 
-# Database configuration
+# Database connection details from environment variables
 DB_CONFIG = {
     "dbname": os.getenv("DB_NAME"),
     "user": os.getenv("DB_USER"),
@@ -17,11 +23,16 @@ DB_CONFIG = {
     "port": os.getenv("DB_PORT", "5432"),
 }
 
-# Print the full connection string for debugging
-print(f"DEBUG: Connection string -> postgresql://{DB_CONFIG['user']}:********@{DB_CONFIG['host']}:{DB_CONFIG['port']}/{DB_CONFIG['dbname']}")
+# Create the database connection
+DATABASE_URL = f"postgresql://{DB_CONFIG['user']}:{DB_CONFIG['password']}@{DB_CONFIG['host']}:{DB_CONFIG['port']}/{DB_CONFIG['dbname']}?sslmode=disable"
 
-# Create engine
-engine = create_engine(
-    f"postgresql://{DB_CONFIG['user']}:{DB_CONFIG['password']}@{DB_CONFIG['host']}:{DB_CONFIG['port']}/{DB_CONFIG['dbname']}?sslmode=require"
-)
+
+try:
+    engine = create_engine(DATABASE_URL)
+    conn = engine.connect()
+    print("✅ SUCCESS: Database connected successfully!")
+    conn.close()
+except Exception as e:
+    print("❌ ERROR: Could not connect to the database!")
+    print(e)
 
