@@ -9,10 +9,10 @@ from sqlalchemy import create_engine
 # Database connection using SQLAlchemy
 DB_CONFIG = {
     "dbname": "timeseriesdb",
-    "user": "giuseppeussia",
-    "password": "Nemo",
+    "user": "++++",
+    "password": "+++",
     "host": "your_host",
-    "port": 5432,
+    "port": ++++,
 }
 
 # Create database connection
@@ -33,7 +33,7 @@ lakes = {
 }
 
 # Streamlit App Title
-st.title("🌍 DETECT_Swiss_Reservoir Dashboard")
+st.title(" DETECT_Swiss_Reservoir Dashboard")
 
 # Select Lake Name (Dropdown)
 selected_lake = st.selectbox("Choose a Lake", list(lakes.values()))
@@ -97,7 +97,7 @@ if st.button("Show Data"):
         # **Download CSV Button**
         csv = df.to_csv(index=False).encode('utf-8')
         st.download_button(
-            label="📥 Download CSV",
+            label=" Download CSV",
             data=csv,
             file_name=f"{selected_lake}_{variable}_data.csv",
             mime="text/csv",
