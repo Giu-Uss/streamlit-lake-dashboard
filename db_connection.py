@@ -30,8 +30,8 @@ engine = create_engine(
 # Test connection
 try:
     with engine.connect() as connection:
-        print("✅ SUCCESS: Connected to the database!")
+        print("SUCCESS: Connected to the database!")
 except Exception as e:
-    print("❌ ERROR: Could not connect to the database!")
+    print("ERROR: Could not connect to the database!")
     print(e)
 
